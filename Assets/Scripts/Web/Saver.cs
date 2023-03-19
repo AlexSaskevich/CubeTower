@@ -48,7 +48,7 @@ public class Saver : MonoBehaviour
         SaveData.TotalMoney = totalMoney;
 
         if (PlayerAccount.IsAuthorized)
-            PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData), onSuccessCallback: ShowSaveLogs);
+            PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData));
     }
 
     public void SaveCurrentMoney(int money)
@@ -56,7 +56,7 @@ public class Saver : MonoBehaviour
         SaveData.CurrentMoney = money;
 
         if (PlayerAccount.IsAuthorized)
-            PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData), onSuccessCallback: ShowSaveLogs);
+            PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData));
     }
 
     public void SaveLevel()
@@ -64,7 +64,7 @@ public class Saver : MonoBehaviour
         SaveData.Level = SceneManager.GetActiveScene().name;
 
         if (PlayerAccount.IsAuthorized)
-            PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData), onSuccessCallback: ShowSaveLogs);
+            PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData));
     }
 
     public void SaveSound(bool isPlaying)
@@ -84,7 +84,7 @@ public class Saver : MonoBehaviour
         SaveData.IsTutorialComplete = isTutorialComplete;
 
         if (PlayerAccount.IsAuthorized)
-            PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData), onSuccessCallback: ShowSaveLogs);
+            PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData));
     }
 
     public string LoadMusic()
@@ -113,28 +113,6 @@ public class Saver : MonoBehaviour
     private void Load()
     {
         if (PlayerAccount.IsAuthorized)
-            PlayerAccount.GetPlayerData(onSuccessCallback: jsonData => ShowLoadLogs(jsonData));
-    }
-
-    private void ShowLoadLogs(string jsonData)
-    {
-        SaveData = JsonUtility.FromJson<SaveData>(jsonData);
-        Debug.LogWarning("Вызвался метод Load");
-        Debug.LogWarning("загрузка SaveData.TotalMoney = " + SaveData.TotalMoney);
-        Debug.LogWarning("загрузка SaveData.CurrentMoney = " + SaveData.CurrentMoney);
-        Debug.LogWarning("загрузка SaveData.Level = " + SaveData.Level);
-        Debug.LogWarning("загрузка SaveData.IsTutorialComplete = " + SaveData.IsTutorialComplete);
-        Debug.LogWarning("загрузка SavedSound = " + PlayerPrefs.GetString(SavedSound));
-        Debug.LogWarning("загрузка SavedMusic = " + PlayerPrefs.GetString(SavedMusic));
-    }
-
-    private void ShowSaveLogs()
-    {
-        Debug.LogWarning("сохранение SaveData.TotalMoney = " + SaveData.TotalMoney);
-        Debug.LogWarning("сохранение SaveData.CurrentMoney = " + SaveData.CurrentMoney);
-        Debug.LogWarning("сохранение SaveData.Level = " + SaveData.Level);
-        Debug.LogWarning("сохранение SaveData.IsTutorialComplete = " + SaveData.IsTutorialComplete);
-        Debug.LogWarning("сохранение SavedSound = " + PlayerPrefs.GetString(SavedSound));
-        Debug.LogWarning("сохранение SavedMusic = " + PlayerPrefs.GetString(SavedMusic));
+            PlayerAccount.GetPlayerData(onSuccessCallback: jsonData => SaveData = JsonUtility.FromJson<SaveData>(jsonData));
     }
 }
