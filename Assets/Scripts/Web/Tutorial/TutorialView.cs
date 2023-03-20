@@ -29,14 +29,6 @@ public class TutorialView : MonoBehaviour, IViewable
         _levelAdvertisement.AdvertisementClosed -= OnAdvertisementClosed;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Show();
-        }
-    }
-
     public void Show()
     {
         _canvasGroup.alpha = 1;

@@ -35,14 +35,6 @@ public class Saver : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-            Load();
-        else if (Input.GetKeyDown(KeyCode.R))
-            ResetData();
-    }
-
     public void SaveTotalMoney(int totalMoney)
     {
         SaveData.TotalMoney = totalMoney;
@@ -95,19 +87,6 @@ public class Saver : MonoBehaviour
     public string LoadSound()
     {
         return PlayerPrefs.HasKey(SavedSound) ? PlayerPrefs.GetString(SavedSound) : null;
-    }
-
-    private void ResetData()
-    {
-        SaveData.TotalMoney = 0;
-        SaveData.CurrentMoney = 0;
-        SaveData.Level = "";
-        SaveData.IsTutorialComplete = false;
-
-        PlayerPrefs.DeleteAll();
-
-        if (PlayerAccount.IsAuthorized)
-            PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData));
     }
 
     private void Load()
