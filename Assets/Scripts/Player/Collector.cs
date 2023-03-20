@@ -120,11 +120,4 @@ public class Collector : MonoBehaviour
         yield return new WaitForSeconds(WaitForSeconds);
         AllCollected?.Invoke();
     }
-
-    public void Cheat()
-    {
-        AvailableCubeSize += MaxAvailableCubeSize;
-        _collider.size = Vector3.one * AvailableCubeSize;
-        _collider.center = Vector3.up * AvailableCubeSize / Divisor;
-    }
 }

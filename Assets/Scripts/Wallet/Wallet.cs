@@ -29,12 +29,6 @@ public class Wallet : MonoBehaviour
         MoneyAmountChanged?.Invoke(Money);
     }
 
-    public void Cheat()
-    {
-        Money += 10000;
-        MoneyAmountChanged?.Invoke(Money);
-    }
-
     public void SetTotalMoney(int score)
     {
         if (score <= TotalMoney)
