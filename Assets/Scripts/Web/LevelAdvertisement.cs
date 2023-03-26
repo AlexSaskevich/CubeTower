@@ -1,7 +1,6 @@
 using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class LevelAdvertisement : MonoBehaviour
 {
@@ -9,12 +8,6 @@ public class LevelAdvertisement : MonoBehaviour
     [SerializeField] private AdvertisementHandler _advertisingHandler;
 
     public event UnityAction AdvertisementClosed;
-
-    private void Start()
-    {
-        if (SceneManager.GetActiveScene().name != LevelName.MENU)
-            StickyAd.Show();
-    }
 
     public void Show()
     {
