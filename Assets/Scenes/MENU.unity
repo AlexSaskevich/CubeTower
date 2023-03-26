@@ -3164,7 +3164,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -123.49988, y: 41.250015}
+  m_AnchoredPosition: {x: -123.5, y: 41.25}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &807262397
@@ -7214,7 +7214,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'CUBE TOWER '
+  m_text: 'CUBE TOWER ARCADE '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 24a48a69795938a41ba5b67e89c1e194, type: 2}
   m_sharedMaterial: {fileID: -2065255617815651790, guid: 24a48a69795938a41ba5b67e89c1e194, type: 2}
@@ -7241,7 +7241,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 61
   m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 1
