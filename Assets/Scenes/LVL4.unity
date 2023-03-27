@@ -15864,7 +15864,8 @@ PrefabInstance:
       propertyPath: _levelLoader
       value: 
       objectReference: {fileID: 675274585}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1770130155682394104, guid: c69682da39c860a48b4be6879911200a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c69682da39c860a48b4be6879911200a, type: 3}
 --- !u!114 &1320343600 stripped
 MonoBehaviour:

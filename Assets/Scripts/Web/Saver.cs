@@ -1,4 +1,4 @@
-using Agava.YandexGames;
+﻿using Agava.YandexGames;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +19,10 @@ public class Saver : MonoBehaviour
 
     public SaveData SaveData;
 
+    private const string SavedCurrentMoney = "SavedCurrentMoney";
+    private const string SavedTotalMoney = "SavedTotalMoney";
+    private const string SavedLevel = "SavedLevel";
+    private const string SavedTutorialProgress = "SavedTutorialProgress";
     private const string SavedSound = "SavedSound";
     private const string SavedMusic = "SavedMusic";
 
@@ -41,6 +45,11 @@ public class Saver : MonoBehaviour
 
         if (PlayerAccount.IsAuthorized)
             PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData));
+        else
+        {
+            PlayerPrefs.SetInt(SavedTotalMoney, totalMoney);
+            PlayerPrefs.Save();
+        }
     }
 
     public void SaveCurrentMoney(int money)
@@ -49,6 +58,11 @@ public class Saver : MonoBehaviour
 
         if (PlayerAccount.IsAuthorized)
             PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData));
+        else
+        {
+            PlayerPrefs.SetInt(SavedCurrentMoney, money);
+            PlayerPrefs.Save();
+        }
     }
 
     public void SaveLevel()
@@ -57,6 +71,11 @@ public class Saver : MonoBehaviour
 
         if (PlayerAccount.IsAuthorized)
             PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData));
+        else
+        {
+            PlayerPrefs.SetString(SavedLevel, SaveData.Level);
+            PlayerPrefs.Save();
+        }
     }
 
     public void SaveSound(bool isPlaying)
@@ -77,6 +96,11 @@ public class Saver : MonoBehaviour
 
         if (PlayerAccount.IsAuthorized)
             PlayerAccount.SetPlayerData(JsonUtility.ToJson(SaveData));
+        else
+        {
+            PlayerPrefs.SetString(SavedTutorialProgress, isTutorialComplete.ToString());
+            PlayerPrefs.Save();
+        }
     }
 
     public string LoadMusic()
@@ -93,5 +117,13 @@ public class Saver : MonoBehaviour
     {
         if (PlayerAccount.IsAuthorized)
             PlayerAccount.GetPlayerData(onSuccessCallback: jsonData => SaveData = JsonUtility.FromJson<SaveData>(jsonData));
+        else
+        {
+            SaveData.CurrentMoney = PlayerPrefs.GetInt(SavedCurrentMoney);
+            SaveData.Level = PlayerPrefs.GetString(SavedLevel);
+            SaveData.TotalMoney = PlayerPrefs.GetInt(SavedTotalMoney);
+            string savedTutorialProgress = PlayerPrefs.GetString(SavedTutorialProgress);
+            SaveData.IsTutorialComplete = string.IsNullOrEmpty(savedTutorialProgress) ? false : bool.Parse(savedTutorialProgress);
+        }
     }
 }
