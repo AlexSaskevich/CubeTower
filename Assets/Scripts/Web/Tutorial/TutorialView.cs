@@ -100,7 +100,7 @@ public class TutorialView : MonoBehaviour, IViewable
 
     private void OnAdvertisementClosed()
     {
-        if (PlayerAccount.IsAuthorized == false || Saver.Instance.SaveData.IsTutorialComplete == false)
+        if (Saver.Instance.SaveData.IsTutorialComplete == false)
             Show();
     }
 }
